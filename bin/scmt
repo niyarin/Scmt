@@ -1,0 +1,9 @@
+#!/bin/sh
+
+_SCMT_HOST_IMPL=${SCMT_HOST_IMPL:-gosh}
+_SCMT_LIB_DIR=lib/
+mkdir -p $HOME/.scmt
+
+#;TODO DOWNLOAD SCHEME IMPL
+
+_SCMT_HOST_IMPL=$_SCMT_HOST_IMPL $_SCMT_HOST_IMPL $_SCMT_LIB_DIR/boot.scm "$@"
