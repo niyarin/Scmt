@@ -1,9 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
 _SCMT_HOST_IMPL=${SCMT_HOST_IMPL:-gosh}
-_SCMT_LIB_DIR=lib/
-mkdir -p $HOME/.scmt
+_SCMT_LIB_DIR=`dirname $0`/../lib/
+_SCMT_DIR=$HOME/.scmt
+
+
+function dl_gauche_bin () {
+    echo "WIP"
+}
+
+mkdir -p $_SCMT_DIR
+mkdir -p $_SCMT_DIR/boot
+mkdir -p $_SCMT_DIR/tmp
+
+dl_gauche_bin
 
 #;TODO DOWNLOAD SCHEME IMPL
 
-_SCMT_HOST_IMPL=$_SCMT_HOST_IMPL $_SCMT_HOST_IMPL $_SCMT_LIB_DIR/boot.scm "$@"
+_SCMT_HOST_IMPL=$_SCMT_HOST_IMPL _SCMT_LIB_DIR=$_SCMT_LIB_DIR $_SCMT_HOST_IMPL $_SCMT_LIB_DIR/boot.scm "$@"
