@@ -13,7 +13,17 @@
 
 (define scmt-lib-dir (get-environment-variable "_SCMT_LIB_DIR"))
 
+(define (load-command! command-name)
+  (unless (scmt-command/command-ref command-name)
+    (let ((command-string (symbol->string command-name)))
+      (load (string-append "./lib/commands/"command-string ".scm")))));;TODO:FIX
+
 (let ((parsed (scmt-optparse/scmt-parser (cdr (command-line)) '())))
-  (case (cadr (assq 'cmd parsed))
-     ((repl) (begin (display "HELLO REPL!") (newline)))
-     (else (begin (display "HELP") (newline)))))
+  (let ((command-name (cadr (assq 'cmd parsed))))
+    (load-command! command-name)
+    (let ((command-description
+            (scmt-command/command-ref command-name)))
+      (when command-description
+        (let ((command-procedure
+                (cadr (assq 'run command-description))))
+          (command-procedure '()))))))
