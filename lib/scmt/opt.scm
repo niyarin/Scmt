@@ -6,6 +6,9 @@
       '(("gosh" ((cmd "gosh")
                  (name "gauche")))))
 
+    (define DEFAULT-OPT
+      `((target-impl ,(cadr (car DEFAULT-IMPLE-DICT)))))
+
     (define (impl-name-parse impl-name)
       (cond
         ((assoc impl-name DEFAULT-IMPLE-DICT)
@@ -35,5 +38,5 @@
       (make-target-imple-opt-parser
         (make-command-opt-parser
           (lambda (input res)
-            (cons (list 'args input)
-                  res)))))))
+            (append (cons (list 'args input) res)
+                    DEFAULT-OPT)))))))

@@ -1,6 +1,6 @@
 (include "./scmt/opt.scm")
 (include "./scmt/command.scm")
-
+(include "./niyarin/external-command.sld")
 (import (scheme base)
         (scheme process-context)
         (scheme write)
@@ -26,4 +26,4 @@
       (when command-description
         (let ((command-procedure
                 (cadr (assq 'run command-description))))
-          (command-procedure '()))))))
+          (command-procedure parsed))))))
