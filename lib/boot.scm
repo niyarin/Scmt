@@ -1,6 +1,11 @@
-(include "./scmt/opt.scm")
-(include "./scmt/command.scm")
-(include "./niyarin/external-command.sld")
+(import (scheme base))
+
+(cond-expand
+  (chibi)
+  (else (include "./scmt/opt-parse.sld")
+        (include "./scmt/command.sld")
+        (include "./niyarin/external-command.sld")))
+
 (import (scheme base)
         (scheme process-context)
         (scheme write)

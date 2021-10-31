@@ -6,7 +6,7 @@
 (define (%run-repl! opt)
   (let* ((impl-info (cond ((assq 'target-impl opt) => cadr) (else #f))))
     (when impl-info
-      (call-external-command (cadr (assq 'cmd impl-info))))))
+      (call-external-command (list (cadr (assq 'cmd impl-info)))))))
 
 (cmd/add-command!
   'repl
