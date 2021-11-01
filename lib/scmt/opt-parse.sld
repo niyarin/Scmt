@@ -4,7 +4,13 @@
   (begin
     (define DEFAULT-IMPLE-DICT
       '(("gosh" ((cmd "gosh")
-                 (name "gauche")))))
+                 (name "gauche")))
+        ("chibi" ((cmd "chibi-scheme")
+                  (name "chibi")))
+        ("foment" ((cmd "foment")
+                   (name "foment")))
+        ("sagittarius" ((cmd "sash")
+                        (name "sagittarius")))))
 
     (define DEFAULT-OPT
       `((target-impl ,(cadr (car DEFAULT-IMPLE-DICT)))))

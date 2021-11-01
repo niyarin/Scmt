@@ -11,6 +11,6 @@
 (cmd/add-command!
   'repl
   `((description "REPL!");;use orange paren??
-    (supported (gauche))
+    (supported (gauche chibi foment))
     (run ,(lambda args
             (%run-repl! (car args))))))
