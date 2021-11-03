@@ -3,14 +3,18 @@
   (export impl-name-parse scmt-parser)
   (begin
     (define DEFAULT-IMPLE-DICT
-      '(("gosh" ((cmd "gosh")
-                 (name "gauche")))
+      '(("gauche" ((cmd "gosh")
+                   (name "gauche")
+                 (add-load-path "-I")))
         ("chibi" ((cmd "chibi-scheme")
-                  (name "chibi")))
+                  (name "chibi")
+                  (add-load-path "-I")))
         ("foment" ((cmd "foment")
-                   (name "foment")))
+                   (name "foment")
+                   (add-load-path "-I")))
         ("sagittarius" ((cmd "sash")
-                        (name "sagittarius")))))
+                        (name "sagittarius")
+                        (add-load-path "-I")))))
 
     (define DEFAULT-OPT
       `((target-impl ,(cadr (car DEFAULT-IMPLE-DICT)))))

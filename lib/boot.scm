@@ -18,6 +18,8 @@
 
 (define scmt-lib-dir (get-environment-variable "_SCMT_LIB_DIR"))
 
+(define scmt-dir (get-environment-variable "_SCMT_DIR"))
+
 (define (load-command! command-name)
   (unless (scmt-command/command-ref command-name)
     (let ((command-string (symbol->string command-name)))
@@ -31,4 +33,5 @@
       (when command-description
         (let ((command-procedure
                 (cadr (assq 'run command-description))))
-          (command-procedure parsed))))))
+          (command-procedure (cons (list 'scmt-dir (list scmt-dir))
+                                   parsed)))))))
