@@ -1,5 +1,4 @@
 (import (scheme base)
-        (scheme write);;
         (scheme list)
         (niyarin external-command)
         (prefix (scmt command) cmd/))
